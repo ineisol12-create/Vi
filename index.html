@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#45658d">
+  <title>Our Song</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- PASSWORD SCREEN -->
+  <section id="lockScreen" class="lock-screen">
+    <div class="lock-card">
+
+      <div class="lock-star">✦</div>
+
+      <p class="lock-small">
+        A little something for you
+      </p>
+
+      <h1>Our Song</h1>
+
+      <p class="lock-message">
+        Enter the password to open our song.
+      </p>
+
+      <form id="unlockForm">
+
+        <label for="password" class="sr-only">
+          Password
+        </label>
+
+        <input
+          id="password"
+          type="password"
+          placeholder="Password"
+          autocomplete="off"
+          spellcheck="false"
+        >
+
+        <button type="submit">
+          Open
+        </button>
+
+        <p id="error" class="error"></p>
+
+      </form>
+
+    </div>
+  </section>
+
+
+  <!-- MAIN WEBSITE -->
+  <main id="songPage" class="song-page" hidden>
+
+    <div class="artboard">
+
+      <!-- Your original picture -->
+      <img
+        class="reference-art"
+        src="assets/artwork.jpg"
+        alt="Our Song"
+        draggable="false"
+      >
+
+
+      <!-- ENGLISH LOVE TEXT -->
+      <div class="translation-layer">
+
+        <!-- Top-left -->
+        <p class="top-message">
+          I'm sure we both think of each other<br>
+          when we hear this song...
+        </p>
+
+
+        <!-- Main title -->
+        <div class="title-overlay">
+          <span>Our</span>
+          <em>Song...</em>
+        </div>
+
+
+        <!-- Dedication -->
+        <div class="dedication">
+          <span>ONLY FOR</span>
+          <em>You, Baby.</em>
+        </div>
+
+
+        <!-- Love quote -->
+        <p class="love-quote">
+          There will always be a special place<br>
+          between so many people, a place<br>
+          that somehow feels like home —<br>
+          <em>just you and me, forever.</em>
+        </p>
+
+      </div>
+
+
+      <!-- CD / VINYL BUTTON -->
+      <button
+        id="recordButton"
+        class="record-button"
+        type="button"
+        aria-label="Play or pause song"
+        aria-pressed="false"
+      >
+
+        <span class="vinyl-effect">
+          <span class="vinyl-ring"></span>
+          <span class="vinyl-glint"></span>
+        </span>
+
+      </button>
+
+    </div>
+
+
+    <!-- SONG -->
+    <audio id="song" preload="auto">
+
+      <source
+        src="assets/song.mp3"
+        type="audio/mpeg"
+      >
+
+    </audio>
+
+  </main>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
