@@ -1,0 +1,673 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  overflow: hidden;
+  background: #fff;
+  color: #45658d;
+}
+
+
+/* =========================
+   PASSWORD SCREEN
+========================= */
+
+.lock-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+
+  display: grid;
+  place-items: center;
+
+  padding: 24px;
+
+  background:
+    radial-gradient(
+      circle at 14% 18%,
+      rgba(69,101,141,.08) 0 2px,
+      transparent 3px
+    ),
+    radial-gradient(
+      circle at 82% 76%,
+      rgba(69,101,141,.08) 0 2px,
+      transparent 3px
+    ),
+    #fff;
+}
+
+
+/* Blue bars */
+
+.lock-screen::before,
+.lock-screen::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  right: 0;
+
+  height: 11px;
+
+  background: #45658d;
+}
+
+.lock-screen::before {
+  top: 0;
+}
+
+.lock-screen::after {
+  bottom: 0;
+}
+
+
+/* Password card */
+
+.lock-card {
+  width: min(410px, 100%);
+
+  padding: 40px 30px 32px;
+
+  text-align: center;
+
+  border: 1px solid rgba(69,101,141,.14);
+
+  border-radius: 18px;
+
+  background: rgba(255,255,255,.97);
+
+  box-shadow:
+    0 20px 65px rgba(69,101,141,.13);
+}
+
+.lock-star {
+  margin-bottom: 7px;
+
+  color: #45658d;
+
+  font-size: 28px;
+}
+
+.lock-small {
+  margin: 0 0 8px;
+
+  color: #777;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 12px;
+
+  letter-spacing: .12em;
+
+  text-transform: uppercase;
+}
+
+.lock-card h1 {
+  margin: 0;
+
+  color: #45658d;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 42px;
+
+  font-weight: 400;
+}
+
+.lock-message {
+  margin: 12px 0 23px;
+
+  color: #777;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 14px;
+}
+
+
+/* Password form */
+
+#unlockForm {
+  display: grid;
+
+  gap: 10px;
+}
+
+#password {
+  width: 100%;
+
+  height: 48px;
+
+  padding: 0 15px;
+
+  border: 1px solid #d5dce4;
+
+  border-radius: 10px;
+
+  outline: none;
+
+  color: #45658d;
+
+  background: white;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 15px;
+
+  text-align: center;
+}
+
+#password:focus {
+  border-color: #45658d;
+
+  box-shadow:
+    0 0 0 3px rgba(69,101,141,.12);
+}
+
+#unlockForm button {
+  height: 48px;
+
+  border: 0;
+
+  border-radius: 10px;
+
+  background: #45658d;
+
+  color: white;
+
+  cursor: pointer;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 15px;
+}
+
+#unlockForm button:active {
+  transform: scale(.99);
+}
+
+.error {
+  min-height: 17px;
+
+  margin: 0;
+
+  color: #a34b55;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 12px;
+}
+
+
+/* =========================
+   MAIN WEBSITE
+========================= */
+
+.song-page {
+  position: fixed;
+
+  inset: 0;
+
+  display: grid;
+
+  place-items: center;
+
+  background: white;
+}
+
+
+/*
+   Keeps the artwork square.
+
+   On desktop:
+   max size = viewport height
+
+   On phone:
+   max size = viewport width
+*/
+
+.artboard {
+  position: relative;
+
+  width: min(100vw, 100vh);
+
+  height: min(100vw, 100vh);
+
+  overflow: hidden;
+}
+
+
+/* Original artwork */
+
+.reference-art {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  display: block;
+
+  user-select: none;
+
+  -webkit-user-drag: none;
+}
+
+
+/* =========================
+   TRANSLATED TEXT
+========================= */
+
+.translation-layer {
+  position: absolute;
+
+  inset: 0;
+
+  pointer-events: none;
+}
+
+
+/* TOP TEXT */
+
+.top-message {
+  position: absolute;
+
+  left: 2%;
+
+  top: 4.6%;
+
+  width: 34%;
+
+  height: 7.2%;
+
+  margin: 0;
+
+  padding: 0 2px;
+
+  background: rgba(255,255,255,.97);
+
+  color: #777;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 12px;
+
+  line-height: 1.45;
+
+  font-style: italic;
+}
+
+
+/* =========================
+   OUR SONG TITLE
+========================= */
+
+.title-overlay {
+  position: absolute;
+
+  left: 27%;
+
+  top: 19.1%;
+
+  width: 36%;
+
+  height: 15.2%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: rgba(255,255,255,.97);
+
+  color: #45658d;
+}
+
+.title-overlay span {
+  align-self: flex-start;
+
+  margin-left: 18%;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 47px;
+
+  line-height: .72;
+
+  font-weight: 400;
+
+  letter-spacing: -1px;
+}
+
+.title-overlay em {
+  margin-top: 8px;
+
+  color: #53647b;
+
+  font-family:
+    "Brush Script MT",
+    "Segoe Script",
+    cursive;
+
+  font-size: 53px;
+
+  line-height: 1;
+
+  font-style: normal;
+
+  white-space: nowrap;
+}
+
+
+/* =========================
+   DEDICATION
+========================= */
+
+.dedication {
+  position: absolute;
+
+  left: 48%;
+
+  top: 68.6%;
+
+  width: 29%;
+
+  height: 14%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: rgba(255,255,255,.97);
+
+  color: #45658d;
+}
+
+.dedication span {
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 18px;
+
+  font-weight: 700;
+
+  line-height: 1;
+}
+
+.dedication em {
+  margin-top: 3px;
+
+  color: #45658d;
+
+  font-family:
+    "Brush Script MT",
+    "Segoe Script",
+    cursive;
+
+  font-size: 37px;
+
+  line-height: 1;
+
+  font-style: normal;
+
+  white-space: nowrap;
+}
+
+
+/* =========================
+   LOVE QUOTE
+========================= */
+
+.love-quote {
+  position: absolute;
+
+  left: 58%;
+
+  top: 83%;
+
+  width: 37%;
+
+  height: 12%;
+
+  margin: 0;
+
+  padding: 3px 2px;
+
+  background: rgba(255,255,255,.97);
+
+  color: #45658d;
+
+  text-align: center;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 11px;
+
+  line-height: 1.45;
+}
+
+.love-quote em {
+  font-style: normal;
+}
+
+
+/* =========================
+   CD / VINYL
+========================= */
+
+.record-button {
+  position: absolute;
+
+  left: 52.2%;
+
+  top: 50.2%;
+
+  width: 13%;
+
+  height: 24%;
+
+  transform: translate(-50%, -50%);
+
+  padding: 0;
+
+  border: 0;
+
+  border-radius: 50%;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  z-index: 10;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+.record-button:focus-visible {
+  outline: 2px solid #45658d;
+
+  outline-offset: 4px;
+}
+
+
+/* Animated vinyl */
+
+.vinyl-effect {
+  position: absolute;
+
+  inset: 2%;
+
+  border-radius: 50%;
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  transition: opacity .3s ease;
+}
+
+.record-button.playing .vinyl-effect {
+  opacity: .62;
+
+  animation:
+    vinylSpin
+    2.15s
+    linear
+    infinite;
+}
+
+
+/* Vinyl grooves */
+
+.vinyl-effect::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  border-radius: 50%;
+
+  background:
+    repeating-radial-gradient(
+      circle,
+
+      rgba(255,255,255,.34)
+      0 1px,
+
+      transparent
+      2px 4px
+    );
+
+  mix-blend-mode: soft-light;
+}
+
+
+/* Inner ring */
+
+.vinyl-ring {
+  position: absolute;
+
+  inset: 8%;
+
+  border:
+    1px solid
+    rgba(255,255,255,.8);
+
+  border-radius: 50%;
+}
+
+
+/* Light reflection */
+
+.vinyl-glint {
+  position: absolute;
+
+  inset: 0;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      125deg,
+
+      transparent 0 38%,
+
+      rgba(255,255,255,.82) 48%,
+
+      transparent 56% 100%
+    );
+}
+
+
+/* Spin */
+
+@keyframes vinylSpin {
+
+  to {
+    transform: rotate(360deg);
+  }
+
+}
+
+
+/* Accessibility */
+
+.sr-only {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+
+  overflow: hidden;
+
+  clip: rect(0,0,0,0);
+
+  white-space: nowrap;
+}
+
+
+/* Mobile */
+
+@media (max-width: 500px) {
+
+  .top-message {
+    font-size: 8px;
+  }
+
+  .title-overlay span {
+    font-size: 31px;
+  }
+
+  .title-overlay em {
+    font-size: 36px;
+  }
+
+  .dedication span {
+    font-size: 11px;
+  }
+
+  .dedication em {
+    font-size: 24px;
+  }
+
+  .love-quote {
+    font-size: 7px;
+  }
+
+}
+
+
+/* Reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .record-button.playing .vinyl-effect {
+    animation: none;
+  }
+
+}
